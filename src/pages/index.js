@@ -31,7 +31,10 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
         <title>Latin</title>
-        <link rel="icon" href="https://rafaell-lycan.com/assets/images/posts/comecando-com-es6.jpg" />
+        <link
+          rel="icon"
+          href="https://rafaell-lycan.com/assets/images/posts/comecando-com-es6.jpg"
+        />
       </Head>
       <div className="w-full md:w-5/12 ml-auto mr-auto py-5 px-4">
         <div className="md:pr-12">
@@ -40,13 +43,13 @@ export default function Home() {
           </h3>
           <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
             A partir do JavaScript ES6 (2015), existe um recurso chamado
-            &apos;Normalize&apos; que permite substituir acentos por caracteres sem
-            acentuação. Para Latino-americanos essa funcionalidade é importante
-            para não quebrar a aplicação com nomes de variaveis/funções em
-            linguagem com caracteres não pertencentes a todos os idiomas. Nesse
-            exemplo só deixei letras e número. Os espaços são retirados, mas é
-            facil deixalos usando na regex de subtituição.
-            Exemplo: São Paulo =&gt; saopaulo
+            &apos;Normalize&apos; que permite substituir acentos por caracteres
+            sem acentuação. Para Latino-americanos essa funcionalidade é
+            importante para não quebrar a aplicação com nomes de
+            variaveis/funções em linguagem com caracteres não pertencentes a
+            todos os idiomas. Nesse exemplo só deixei letras e número. Os
+            espaços são retirados, mas é facil deixalos usando na regex de
+            subtituição. Exemplo: São Paulo =&gt; saopaulo
           </p>
         </div>
       </div>
@@ -69,6 +72,7 @@ export default function Home() {
               type="checkbox"
               className="absolute opacity-0 w-0 h-0"
               onChange={handleEspaco}
+              value={espaco}
             />
           </span>
         </span>
@@ -85,17 +89,24 @@ export default function Home() {
           type="text"
           placeholder="Insira o texto..."
           onChange={handleTexto}
+          value={texto}
         />
       </div>
-      <div className="flex py-4">
+      <div
+        className="flex py-4"
+        onClick={() => {
+          navigator.clipboard.writeText(texto);
+        }}
+      >
         <span className="text-sm border border-2 rounded-l px-4 py-2 w-28 bg-gray-300 whitespace-no-wrap text-center">
           Output
         </span>
         <input
           name="texto"
-          className="border border-2 rounded-r px-4 py-2 w-full"
+          className="border border-2 rounded-r px-4 py-2 w-full "
           type="text"
           placeholder="Saida.."
+          readOnly
           value={texto}
         />
       </div>
