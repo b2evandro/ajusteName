@@ -6,22 +6,21 @@ export default function Home() {
   const [espaco, setEspaco] = useState(false);
 
   const inverteToogle = " ease-in-out bg-white";
-  const handleTexto = (e) => {
+  const changeTexto = (e) => {
+    setTexto(e.target.value);
+  };
+
+  const handleTexto = () => {
     if (espaco) {
-      setTexto(
-        e.target.value
-          .normalize("NFD")
-          .replace(/[^a-zA-Zs1-9\s]/g, "")
-          .toLowerCase()
-      );
-      return;
-    }
-    setTexto(
-      e.target.value
+      return texto
         .normalize("NFD")
-        .replace(/[^a-zA-Zs1-9]/g, "")
-        .toLowerCase()
-    );
+        .replace(/[^a-zA-Zs1-9\s]/g, "")
+        .toLowerCase();
+    }
+    return texto
+      .normalize("NFD")
+      .replace(/[^a-zA-Zs1-9]/g, "")
+      .toLowerCase();
   };
   const handleEspaco = () => {
     setEspaco(!espaco);
@@ -88,7 +87,7 @@ export default function Home() {
           className="border border-2 rounded-r px-4 py-2 w-full"
           type="text"
           placeholder="Insira o texto..."
-          onChange={handleTexto}
+          onChange={changeTexto}
           value={texto}
         />
       </div>
@@ -107,7 +106,7 @@ export default function Home() {
           type="text"
           placeholder="Saida.."
           readOnly
-          value={texto}
+          value={handleTexto()}
         />
       </div>
     </div>
