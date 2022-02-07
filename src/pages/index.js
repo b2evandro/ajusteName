@@ -14,12 +14,12 @@ export default function Home() {
     if (espaco) {
       return texto
         .normalize("NFD")
-        .replace(/[^a-zA-Zs1-9\s]/g, "")
+        .replace(/[^a-zA-Zs0-9\s]/g, "")
         .toLowerCase();
     }
     return texto
       .normalize("NFD")
-      .replace(/[^a-zA-Zs1-9]/g, "")
+      .replace(/[^a-zA-Zs0-9]/g, "")
       .toLowerCase();
   };
   const handleEspaco = () => {
