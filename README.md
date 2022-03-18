@@ -8,7 +8,7 @@ Nesse exemplo só deixei letras e número. Os espaços são retirados, mas é fa
  ```JavaScript
 function convertName(nameInput){
 
-return nameInput.normalize("NFD").replace(/[^a-zA-Zs1-9]/g, "").toLowerCase();
+return nameInput.normalize("NFD").replace(/[^a-zA-Zs0-9]/g, "").toLowerCase();
 }
 
 convertName("São Paulo")
